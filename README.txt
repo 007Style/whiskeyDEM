@@ -1,5 +1,17 @@
 README.TXT
 
+whiskeyDem was last compiled in 2005 with java and java3D.  It may be
+difficult to compile the code with modern tools.  In a nutshell, this 
+program will create a 3d virtual world with an aircraft as an avatar.
+There are no flight model physics, bounding box edge detection or video
+game mechanics implemented.  Very basic networking abilities are included
+that was used to test various networking concepts to provide the remote 
+user with a "good" experience with minimal network lag, etc.  The scenery 
+generated is provided by the USGS Digital Elevation Maps.  Feedback welcome
+especially if the project can compile with modern java tools!  
+
+--------------------------------------------------------------------------------
+
 whiskeyDem is open source!  This means you are free to modify it as needed
 according to the General Public License, GPL.  Please feel free to
 distribute this software, modify it, play with it and have fun.  Please,
@@ -24,7 +36,7 @@ Here are some fixes and additions that could be done to that end:
   "botsOn" framework in the fligh simulator to include a dynamic
   aircraft instantiation/destruction routine to play remote user piloted
   aircraft in the sim and remove them when those users disconnect.
-* Add all options in the "config.txt" to a user friendly menu withint the
+* Add all options in the "config.txt" to a user friendly menu within the
   current simulation options menu.
 * Closer integration of ipKtalk and ipKchat with the simulation.
 * Weapon and scoring system.
