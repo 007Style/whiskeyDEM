@@ -1,0 +1,19 @@
+#whiskeyDem properties file
+#Tue Nov 30 00:13:50 EST 2004
+simType=0
+serverName=kdog
+mainWindowHeight=500
+serverPort=2221
+mainWindowWidth=720
+framesPerSecond=30
+yawFactor=0.04
+areaName=lake_champlain-e
+speedFactor=1.0
+pitchFactor=0.04
+syncAfterFrame=-1
+mainWindowY=51
+mainWindowX=50
+botsOn=true
+rollFactor=0.04
+allowWireframe=false
+planeName=a10.wrl

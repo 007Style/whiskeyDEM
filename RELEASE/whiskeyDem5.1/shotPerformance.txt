@@ -1,0 +1,264 @@
+Local Machine  = Dual 700mhz Intel Pentium III, 1GB ram
+                 Nvidia Geforce3 64MB video card
+Server Machine = Single 700mhz AMD Athlon, 256MB RAM
+
+
+Standard Spin Test: From the starting position, increase speed to just over 300 MPH.  Press and hold the left turn button.  Set client/server FPS to 30 and Collect data every 5, 20 and 100 frames.  Full Screen.
+Smooth    = Smooth animation, like watching a movie.
+Jerky     = Animation is erratic.  Seems to skip.
+In Sync   = Client annimation matches server annimation fairly well.
+Objective = Is to find a balance of jerky animation and the simulations being in sync.  A balance of both provides the best results.  It is important to record the qualifying as well as the quantifying data in this study.  A "feel" for how well the simulation is behaving is workth more than any statistic.
+
+simType=0, syncAfterFrame=5
+Description:  Jerkey, but relatively in sync.
+***  3d Sync NOW!  ***
+Local  Frame      #: 3
+Server Frame Sync #: 5
+***  3d Sync NOW!  ***
+Local  Frame      #: 6
+Server Frame Sync #: 5
+***  3d Sync NOW!  ***
+Local  Frame      #: 5
+Server Frame Sync #: 5
+***  3d Sync NOW!  ***
+Local  Frame      #: 3
+Server Frame Sync #: 5
+***  3d Sync NOW!  ***
+Local  Frame      #: 6
+Server Frame Sync #: 5
+***  3d Sync NOW!  ***
+Local  Frame      #: 3
+Server Frame Sync #: 5
+***  3d Sync NOW!  ***
+Local  Frame      #: 6
+Server Frame Sync #: 5
+***  3d Sync NOW!  ***
+Local  Frame      #: 3
+Server Frame Sync #: 5
+***  3d Sync NOW!  ***
+Local  Frame      #: 6
+Server Frame Sync #: 5
+***  3d Sync NOW!  ***
+Local  Frame      #: 5
+Server Frame Sync #: 5
+
+simType=0, syncAfterFrame=20
+Description: Not very jerky but out of sync slightly.
+***  3d Sync NOW!  ***
+Local  Frame      #: 17
+Server Frame Sync #: 20
+***  3d Sync NOW!  ***
+Local  Frame      #: 20
+Server Frame Sync #: 20
+***  3d Sync NOW!  ***
+Local  Frame      #: 18
+Server Frame Sync #: 20
+***  3d Sync NOW!  ***
+Local  Frame      #: 20
+Server Frame Sync #: 20
+***  3d Sync NOW!  ***
+Local  Frame      #: 18
+Server Frame Sync #: 20
+***  3d Sync NOW!  ***
+Local  Frame      #: 17
+Server Frame Sync #: 20
+***  3d Sync NOW!  ***
+Local  Frame      #: 21
+Server Frame Sync #: 20
+***  3d Sync NOW!  ***
+Local  Frame      #: 17
+Server Frame Sync #: 20
+***  3d Sync NOW!  ***
+Local  Frame      #: 20
+Server Frame Sync #: 20
+***  3d Sync NOW!  ***
+Local  Frame      #: 18
+Server Frame Sync #: 20
+
+simType=0, syncAfterFrame=100
+Description: Pretty smooth, but significantly out of sync.
+***  3d Sync NOW!  ***
+Local  Frame      #: 98
+Server Frame Sync #: 100
+***  3d Sync NOW!  ***
+Local  Frame      #: 95
+Server Frame Sync #: 100
+***  3d Sync NOW!  ***
+Local  Frame      #: 92
+Server Frame Sync #: 100
+***  3d Sync NOW!  ***
+Local  Frame      #: 93
+Server Frame Sync #: 100
+***  3d Sync NOW!  ***
+Local  Frame      #: 96
+Server Frame Sync #: 100
+***  3d Sync NOW!  ***
+Local  Frame      #: 93
+Server Frame Sync #: 100
+***  3d Sync NOW!  ***
+Local  Frame      #: 94
+Server Frame Sync #: 100
+***  3d Sync NOW!  ***
+Local  Frame      #: 93
+Server Frame Sync #: 100
+***  3d Sync NOW!  ***
+Local  Frame      #: 95
+Server Frame Sync #: 100
+***  3d Sync NOW!  ***
+Local  Frame      #: 94
+Server Frame Sync #: 100
+
+simType=1, syncAfterFrame=5
+Description: Jerky, but very much in sync.
+***  3d Sync NOW!  ***
+Local  Frame      #: 6
+Server Frame Sync #: 5
+***  3d Sync NOW!  ***
+Local  Frame      #: 6
+Server Frame Sync #: 5
+***  3d Sync NOW!  ***
+Local  Frame      #: 4
+Server Frame Sync #: 5
+***  3d Sync NOW!  ***
+Local  Frame      #: 4
+Server Frame Sync #: 5
+***  3d Sync NOW!  ***
+Local  Frame      #: 4
+Server Frame Sync #: 5
+***  3d Sync NOW!  ***
+Local  Frame      #: 6
+Server Frame Sync #: 5
+***  3d Sync NOW!  ***
+Local  Frame      #: 4
+Server Frame Sync #: 5
+***  3d Sync NOW!  ***
+Local  Frame      #: 4
+Server Frame Sync #: 5
+***  3d Sync NOW!  ***
+Local  Frame      #: 6
+Server Frame Sync #: 5
+***  3d Sync NOW!  ***
+Local  Frame      #: 6
+Server Frame Sync #: 5
+
+simType=1, syncAfterFrame=20
+Description: Slightly jerky, very in sync
+***  3d Sync NOW!  ***
+Local  Frame      #: 18
+Server Frame Sync #: 20
+***  3d Sync NOW!  ***
+Local  Frame      #: 18
+Server Frame Sync #: 20
+***  3d Sync NOW!  ***
+Local  Frame      #: 21
+Server Frame Sync #: 20
+***  3d Sync NOW!  ***
+Local  Frame      #: 18
+Server Frame Sync #: 20
+***  3d Sync NOW!  ***
+Local  Frame      #: 20
+Server Frame Sync #: 20
+***  3d Sync NOW!  ***
+Local  Frame      #: 18
+Server Frame Sync #: 20
+***  3d Sync NOW!  ***
+Local  Frame      #: 18
+Server Frame Sync #: 20
+***  3d Sync NOW!  ***
+Local  Frame      #: 19
+Server Frame Sync #: 20
+***  3d Sync NOW!  ***
+Local  Frame      #: 18
+Server Frame Sync #: 20
+***  3d Sync NOW!  ***
+Local  Frame      #: 21
+Server Frame Sync #: 20
+
+
+simType=1, syncAfterFrame=100
+Description: Pretty smooth, mostly in sync.
+***  3d Sync NOW!  ***
+Local  Frame      #: 94
+Server Frame Sync #: 100
+***  3d Sync NOW!  ***
+Local  Frame      #: 94
+Server Frame Sync #: 100
+***  3d Sync NOW!  ***
+Local  Frame      #: 92
+Server Frame Sync #: 100
+***  3d Sync NOW!  ***
+Local  Frame      #: 94
+Server Frame Sync #: 100
+***  3d Sync NOW!  ***
+Local  Frame      #: 94
+Server Frame Sync #: 100
+***  3d Sync NOW!  ***
+Local  Frame      #: 92
+Server Frame Sync #: 100
+***  3d Sync NOW!  ***
+Local  Frame      #: 96
+Server Frame Sync #: 100
+***  3d Sync NOW!  ***
+Local  Frame      #: 92
+Server Frame Sync #: 100
+***  3d Sync NOW!  ***
+Local  Frame      #: 96
+Server Frame Sync #: 100
+***  3d Sync NOW!  ***
+Local  Frame      #: 94
+Server Frame Sync #: 100
+
+simType=1, syncAfterFrame=-2 (Whiskey Shot "Best" Method)
+Description: Mostly smooth and mostly in sync.
+No local / server frame communication so we record buffer lengths.
+Read: 5    Played: 4    Dropped: 1
+Read: 6    Played: 5    Dropped: 1
+Read: 5    Played: 4    Dropped: 1
+Read: 5    Played: 4    Dropped: 1
+Read: 5    Played: 4    Dropped: 1
+Read: 5    Played: 4    Dropped: 1
+Read: 6    Played: 5    Dropped: 1
+Read: 4    Played: 4    Dropped: 0
+Read: 4    Played: 3    Dropped: 1
+Read: 6    Played: 5    Dropped: 1
+
+
+
+
+Code Examples:
+
+Data being marshaled and sent accross link = 
+public class flightPacket implements Serializable 
+{
+  public Point3d   m_newPos = new Point3d(0,0,0);
+  public Vector3d  m_travel = new Vector3d(0,0,0);
+  public double    m_distanceTraveled = 0;
+  public boolean   sync = false;
+  public int       fps = 0;
+  //public String    m_name = null;  //Reserved for fully distributed system
+  //public String    m_plane = null; //Reserved for fully distributed system
+  //public int       m_options = 0;  //Reserved for fully distributed system
+}
+
+Non-blocking IO read = 
+status = sc.read(dst);
+if(status >0) {/* Code goes here */} //If Status is >0, Parse out flightPackets and put in buffer.
+
+Threaded tradition socket read = 
+public void run()
+{
+	while(true)
+  {
+  	syncer = cRecv();  // Read flightPacket from socket
+  	if(syncer.sync==true)  //If sync is set, initialize buffer clear routine
+  	{
+  		fPacket = syncer;
+  		syncUp();
+  	}
+  	else
+  	{
+  		syncQ.addLast(syncer);  //Otherwise we add the packet to the buffer
+  	}
+  }	
+}
+  

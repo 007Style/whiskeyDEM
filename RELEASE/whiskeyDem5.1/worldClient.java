@@ -1,0 +1,255 @@
+/*
+ * worldClient.java
+ */
+
+import java.io.*;
+import java.net.*;
+import java.util.*;
+
+
+public class worldClient extends Thread
+{
+  static int port = 2222;       // default server port
+  static String host = "kdog";      // default server host
+  static String id = "DualDog";
+  static Socket s = null;
+  static OutputStream os = null;
+  static BufferedReader is = null; 
+  static ObjectInputStream in = null;
+  private ControlJPanel cjp = null;
+  private static LinkedList syncQ = null;
+  private flightPacket fPacket = new flightPacket();
+  private flightPacket syncer = new flightPacket();
+  private Thread world_thread;
+
+  public static void main(String [] argv)
+  {
+    String usage = "usage: java DemoClient [-h host] [-p port] ID " +
+          "\n (default port=" + port +", host=" + host + ")";
+    try
+    {
+      Arguments arguments = new Arguments(argv);  //Start parsing commmand line
+      if (arguments.isSpecified("h"))
+        host = arguments.getModified("h");
+      if (arguments.isSpecified("p"))
+        port = arguments.getModifiedInt("p");
+      if (arguments.getUnmodified().size() > 0)
+        id = (String) arguments.getUnmodified().get(0);  //End parse
+    }
+    catch (NumberFormatException e)
+    {
+      System.err.println("bad number format");
+      System.exit(1);
+    }
+    System.out.println("");
+    System.out.println("Port: " + port);
+    System.out.println("Host: " + host);
+    System.out.println("ID: " + id);
+    System.out.println("");
+
+    //doDaWork();
+  }
+
+  public worldClient(ControlJPanel c)
+  {
+  	syncQ = new LinkedList();
+  	syncQ.addFirst(new flightPacket());
+  	port = ProgramConfig.getServerPort();
+  	host = ProgramConfig.getServerName();
+   	cjp = c;
+  	//System.out.println("Client Constructed...");
+  	world_thread = new Thread(this);
+  	//doDaWork();
+  } 
+  
+  public worldClient()
+  {
+  	syncQ = new LinkedList();
+  	syncQ.addFirst(new flightPacket());
+  	//System.out.println("Client Constructed...");
+  	world_thread = new Thread(this);
+  	//doDaWork();
+  } 
+  
+  public flightPacket cRecv()
+  {
+  	flightPacket f = new flightPacket();
+  	//String cmd = null;
+    try
+    {
+      f = (flightPacket)in.readObject();
+    }
+    catch (java.io.IOException e)
+    {
+      //System.out.println(e.getMessage());
+      //e.printStackTrace();
+    }
+    catch (java.lang.ClassNotFoundException e) {}
+    return f;	
+  }
+  
+  public void ClientTo(String input)
+  {
+    try
+    {
+      byte[] outbytes = (input).getBytes();  //This is the main sending loop
+      os.write(outbytes, 0, outbytes.length);
+      os.write("\n".getBytes());  //Reads from terminal then sends
+      os.flush();  //  through socket
+      if(input.equals("%q"))  //%q exits
+      {
+        System.out.println("Quiting...");
+        System.exit(0);
+      }
+    }
+    catch (java.io.IOException e)
+    {
+      //System.out.println(e.getMessage());
+      //e.printStackTrace();
+    } 
+  }
+
+  public void doDaWork()  //Sets up socket communication
+  {
+    try
+    {
+    	System.out.println("Trying to connect to the socket");
+      s = new Socket(host, port);
+      os = s.getOutputStream();
+      is = new BufferedReader(new InputStreamReader(s.getInputStream()));
+      in = new ObjectInputStream(s.getInputStream());
+      cjp.btnCommands.setEnabled(false);
+      cjp.btnNetwork.setEnabled(false);
+      System.out.println("Connection Made");
+      //System.out.println("Bringing up Threads...");
+      //ClientFrom f = new ClientFrom(is);
+      //f.start();  //Starts recieving thread...
+      //ClientTo t = new ClientTo(os, id);
+      //t.start();  //Start sending thread...
+      //String cmd;
+      //while((cmd = is.readLine()) != null)  //Reads from socket and prints
+      //{                                     //  to terminal
+      //  //System.out.print("?");  //My attempt at a prompt :)
+      //  System.out.println(cmd);
+      //}
+      ////syncQ.addLast(new flightPacket());
+      ////world_thread.start();
+      this.start();
+    }  //That's it, now look at "ClientFrom.java" and "ClientTo.java"
+    catch (UnknownHostException e)
+    {
+      System.err.println("unknown host: " + host);
+      cjp.btnCommands.setEnabled(true);
+      cjp.btnNetwork.setEnabled(true);
+      //System.exit(1);
+    }
+    catch (IOException e)
+    {
+      System.out.println(e.getMessage());
+      cjp.btnCommands.setEnabled(true);
+      cjp.btnNetwork.setEnabled(true);
+      //e.printStackTrace();
+    }
+  }
+  
+  public static void DisconnecT()  //Breaks the connection and returns the client
+  {
+    try {s.close();}
+    catch (IOException e) {}
+  }
+
+  public flightPacket sRecv()  //uses queue to recieve packets.
+  {
+  	//System.out.println("here NUTS");
+  	if(syncQ.size()==1)  
+  	{
+  	  //System.out.println("here 0");
+  	  fPacket = (flightPacket)syncQ.getFirst();
+  	  return fPacket;
+  	}
+  	else if(syncQ.size()==0)
+  	{
+  		//System.out.println("here -1");
+  		return fPacket;
+  	}
+  	else
+  	{
+  	  //System.out.println("here 1");
+  	  fPacket = (flightPacket)syncQ.removeFirst();
+  	  return fPacket;
+  	}
+  }
+  
+  public void syncUp()
+  {
+  	if(ProgramConfig.getSyncAfterFrame()!=0)
+  	{
+  		System.out.println(" ");
+  		System.out.println("***  3d Sync NOW!  ***");
+  		System.out.println("Local  Frame      #: " + MovementModel.getFPS());
+  		System.out.println("Server Frame Sync #: " + syncer.fps);
+  	}
+  	//flightPacket tmp = (flightPacket)syncQ.getLast();
+  	//syncQ.clear();
+  	//syncQ.addFirst(tmp);
+  	syncQ.clear();
+  	//syncQ.addFirst(syncer);	
+  	MovementModel.setFPS(0);
+  }
+  
+  public void run()
+  {
+  	while(true)
+    {
+    	syncer = cRecv();
+    	if(syncer.sync==true)  
+    	{
+    		fPacket = syncer;
+    		syncUp();
+    	}
+    	else
+    	{
+    		syncQ.addLast(syncer);
+    	}
+    }	
+  }
+}
+
+
+
+
+
+
+
+
+/*
+public void syncUp()
+  {
+  	if(ProgramConfig.getSyncAfterFrame()!=0)
+  	{
+  		System.out.println(" ");
+  		System.out.println("***  3d Sync NOW!  ***");
+  		System.out.println("Local  Frame      #: " + MovementModel.getFPS());
+  		System.out.println("Server Frame Sync #: " + syncer.fps);
+  	}
+  	//flightPacket tmp = (flightPacket)syncQ.getLast();
+  	//syncQ.clear();
+  	//syncQ.addFirst(tmp);
+  	syncQ.clear();
+  	//syncQ.addFirst(syncer);	
+  	MovementModel.setFPS(0);
+  }
+  
+public void run()
+  {
+  	while(true)
+    {
+    	syncer = cRecv();
+    	if(syncer.sync==true)  
+    	{
+    		syncUp();
+    	}
+    	syncQ.addLast(syncer);
+    }	
+  }
+*/

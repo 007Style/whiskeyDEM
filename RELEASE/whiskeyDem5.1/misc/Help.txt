@@ -1,0 +1,90 @@
+HELPSTART=overview
+
+
+                whiskeyDem
+
+
+--- Plane Controls ---
+
+To start flying, put cursor in the window, press "w" and use arrows.
+
+The controls are mimiking RC plane controls - left stick controls throttle
+and rudder (vertical control on the tail of the plane) and right stick
+controls elevator and aelerons. Left stick is represented by letters
+"a" "s" "w" "d" on the keyboard (forming convenient cross) and right stick 
+is just standard set of arrow keys. Pressing space key freezes the flight (speed=0)
+and "Esc" & 'r' resets the plane to initial position.
+
+Mouse also controls the plane, dragging the mouse around central point in the
+window controls aelerons and elevator. Releasing left button freezes the flight.
+
+The 'Server' and 'Client' buttons control the networking functions.  Once connected
+press 'Enter' anytime to synchronize all simulations.
+
+Thanks to:
+	Sun's Java Team
+	Sergei Grichine
+
+Authors:
+	Daneyand Singley
+	Kevin Gorman
+
+
+HELPSTART=dlgOptions
+Here is what you can set in this dialog: 
+
+-- Allow Wireframe
+   when plane is moving, rendering of the DEM is switched to wireframe mode.
+   this saves the farm on slow computers.
+
+-- Frames Per Second
+   here is your chance to know how slow is your computer. 10 works just fine though.
+
+-- Controls sensitivity
+   roll, pitch and yaw factors feel right at 0.03, and speed at about 1.0 to 2.0
+
+-- DEM name
+   all .dem files in folder ../JavaFlightObjects/DEMs are listed here as Area Names
+   (it takes time to load DEMs, please wait patiently after pressing OK)
+   Download more DEMs (place them in the folder above) at: 
+   http://www.webgis.com/index.html
+
+-- Plane name
+   Upon restart a new plane will be loaded.  Some planes are not transformed properly.
+
+Other options that can be set in: config/config.txt
+   
+-- Bots on
+   Set this either to 'true' or 'false' in the config file to turn on an F18 and F14 bot.
+
+-- Server
+   Specifies what server you would like to connect to.	
+
+-- Port
+   Port number used for communication.
+
+-- Sync after frame
+   '-1': No sync.  
+    '0': Sync on every frame.  
+   '+#': Sync after some number of frames.
+   '-2': Uses "best" Method of clearing the nioSyncQ when more data is available in the socket buffer.
+   '-3': "Best" method with server frame number.
+   '-4': "Best" method with server frame number and debug messages.
+ 
+
+-- Sim type
+   '0': Uses standard Java sockets and threads to implement network features.
+   '1': Uses Java NIO sockets and no threads to increase network performance.
+
+Your changes will persist through file config/config.txt
+
+Thanks to:
+	Sun's Java Team
+	Sergei Grichine
+
+Authors:
+	Daneyand Singley
+	Kevin Gorman
+
+HELPSTART=moretopic
+
